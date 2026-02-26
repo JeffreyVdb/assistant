@@ -1,0 +1,9 @@
+.env
+.envrc
+.gemini/
+.DS_Store
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.log
