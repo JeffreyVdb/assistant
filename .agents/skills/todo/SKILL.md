@@ -19,9 +19,13 @@ This skill uses environment variables to protect sensitive project details. **Al
 
 ## Operational Guidelines
 
-### 1. Listing Tasks (Default View)
+### 1. Listing Tasks (Default View & Timeframes)
 - **Status Filter:** Always default to listing **open tasks only** (`done: false`) unless the user explicitly asks for completed tasks.
 - **Explicit Project ID:** Never attempt a "list all" without a `projectId`. 
+- **Time-based Queries (Fetch & Manual Filter):** When asked for tasks within a specific timespan (e.g., "tomorrow", "this morning"), **DO NOT** use complex server-side filters for `due_date`. Instead:
+    1. Fetch all open tasks for the relevant project(s) using `done: false`.
+    2. Manually filter the results in your context by parsing the `due_date` strings.
+    3. This avoids "Invalid filter syntax" errors and ensures accuracy.
 - **Example:** `vikunja_task_crud({ operation: "list", projectId: process.env.GEMINI_WORK_PROJECT_ID, done: false })`
 
 ### 2. Task Creation & Enrichment
