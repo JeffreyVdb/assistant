@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Use this skill when the user asks to commit changes to the code or prepare a commit.
+description: Use this skill when the user asks to commit changes to the code or prepare a commit or sync code changes.
 ---
 
 # Commit
@@ -11,7 +11,11 @@ The user uses Jujutsu (`jj`) for version control, along with the Conventional Co
 
 When asked to commit changes, follow this exact sequence:
 
-1. Create a clear and concise commit message using the Conventional Commits format.
+1. Sync the documentation to ensure the README.md is up to date:
+   ```bash
+   node .agents/scripts/sync-docs.cjs
+   ```
+2. Create a clear and concise commit message using the Conventional Commits format.
 2. Ensure that lines in the description and message are no longer than 100 characters.
 3. Commit the current change with the description:
    ```bash
