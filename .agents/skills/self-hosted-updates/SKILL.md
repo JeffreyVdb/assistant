@@ -20,9 +20,9 @@ Versions and image definitions are stored in each role's defaults file:
 `$HOME/devel/ansible-home/roles/<software>/defaults/main.yaml`
 
 ### Deployment Workflow
-1.  **Check Version:** Identify the latest version of the container image (e.g., via Docker Hub or GHCR).
+1.  **Check Version:** Identify the latest version of the container image (e.g., via Docker Hub or GHCR). Compare it to the currently deployed version.
 2.  **Update Config:** Update the `<software>__version` variable in the corresponding `defaults/main.yaml` file.
-3.  **Run Playbook:** Execute the playbook from the `$HOME/devel/ansible-home` directory with the `--diff` flag.
+3.  **Run Playbook:** Execute the playbook from the `$HOME/devel/ansible-home` directory with the `--diff` flag. **CRITICAL:** NEVER run the playbook if there are no version updates, unless explicitly asked by the user to do so.
 
 ## Software Details
 
