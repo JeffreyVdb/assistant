@@ -1,6 +1,6 @@
 ---
 name: todo
-description: Use this skill when the user wants to be reminded of something, asks to create or schedule a task, or asks about tasks in general.
+description: Use this skill when the user wants to manage, list, or be reminded of tasks/todos, asks about their schedule (e.g., "what do I have to do tomorrow?"), or needs to create/update tasks in Vikunja.
 ---
 
 # Todo Manager
