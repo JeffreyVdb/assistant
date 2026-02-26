@@ -5,14 +5,11 @@ const SKILLS_DIR = path.join(__dirname, '../skills');
 const README_PATH = path.join(__dirname, '../../README.md');
 
 function extractMetadata(skillMdContent) {
-  const match = skillMdContent.match(/---
-([\s\S]*?)
----/);
+  const match = skillMdContent.match(/---\n([\s\S]*?)\n---/);
   if (!match) return null;
   
   const metadata = {};
-  match[1].split('
-').forEach(line => {
+  match[1].split('\n').forEach(line => {
     const [key, ...value] = line.split(':');
     if (key && value) {
       metadata[key.trim()] = value.join(':').trim();
@@ -24,11 +21,7 @@ function extractMetadata(skillMdContent) {
 function generateSkillsSection() {
   const skills = fs.readdirSync(SKILLS_DIR).filter(f => fs.statSync(path.join(SKILLS_DIR, f)).isDirectory());
   
-  let section = '## 🛠 Skills
-
-Each skill provides specialized guidance and tools for specific tasks.
-
-';
+  let section = '## 🛠 Skills\n\nEach skill provides specialized guidance and tools for specific tasks.\n\n';
   
   skills.sort().forEach(skill => {
     const skillPath = path.join(SKILLS_DIR, skill, 'SKILL.md');
@@ -36,11 +29,8 @@ Each skill provides specialized guidance and tools for specific tasks.
       const content = fs.readFileSync(skillPath, 'utf8');
       const metadata = extractMetadata(content);
       if (metadata) {
-        section += `### ${metadata.name || skill} (`${skill}`)
-`;
-        section += `**Purpose:** ${metadata.description}
-
-`;
+        section += `### ${metadata.name || skill} (\`${skill}\`)\n`;
+        section += `**Purpose:** ${metadata.description}\n\n`;
       }
     }
   });
@@ -48,15 +38,23 @@ Each skill provides specialized guidance and tools for specific tasks.
   return section;
 }
 
+if (!fs.existsSync(README_PATH)) {
+  console.error('❌ README.md not found at ' + README_PATH);
+  process.exit(1);
+}
+
 const readmeContent = fs.readFileSync(README_PATH, 'utf8');
 const skillsSection = generateSkillsSection();
 
-const updatedReadme = readmeContent.replace(
-  /## 🛠 Skills[\s\S]*?---
-/m,
-  `${skillsSection}---
-`
+const newContent = readmeContent.replace(
+  /## 🛠 Skills[\s\S]*?---\n/m,
+  `${skillsSection}---\n`
 );
 
-fs.writeFileSync(README_PATH, updatedReadme);
-console.log('✅ README.md skills section updated!');
+if (newContent !== readmeContent) {
+  fs.writeFileSync(README_PATH, newContent);
+  console.log('✅ README.md skills section updated!');
+} else {
+  // Silent success for hook compatibility
+  console.log('ℹ️ No changes detected in skills, README.md remains unchanged.');
+}
