@@ -13,19 +13,15 @@ When asked to commit changes, follow this exact sequence:
 
 1. Create a clear and concise commit message using the Conventional Commits format.
 2. Ensure that lines in the description and message are no longer than 100 characters.
-3. Add the description to the current change:
+3. Commit the current change with the description:
    ```bash
-   jj desc -m "type(scope): concise description of the change"
+   jj commit -m "type(scope): concise description of the change"
    ```
-4. Commit the current change:
-   ```bash
-   jj commit
-   ```
-5. Set the `main` bookmark to the newly committed revision (which is now the parent of the new working copy, denoted by `@-`):
+4. Set the `main` bookmark to the newly committed revision (which is now the parent of the new working copy, denoted by `@-`):
    ```bash
    jj bookmark set main -r @-
    ```
-6. Push the `main` bookmark to the remote repository:
+5. Push the `main` bookmark to the remote repository:
    ```bash
    jj git push -b main
    ```
