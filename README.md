@@ -18,6 +18,9 @@ Each skill provides specialized guidance and tools for specific tasks.
 ### todo (`todo`)
 **Purpose:** Use this skill when the user wants to manage, list, or be reminded of tasks/todos, asks about their schedule (e.g., "what do I have to do tomorrow?"), or needs to create/update tasks in Vikunja.
 
+### working-with-jj (`working-with-jj`)
+**Purpose:** Expert guidance for using JJ (Jujutsu) version control system. Use when working with JJ, whatever the subject. Operations, revsets, templates, debugging change evolution, etc. Covers JJ commands, template system, evolog, operations log, and interoperability with git remotes.
+
 ---
 
 ## 🔧 Automation Hooks
