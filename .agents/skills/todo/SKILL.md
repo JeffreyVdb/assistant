@@ -14,6 +14,7 @@ This skill uses environment variables to protect sensitive project details. **Al
 - **Work Project:** Name stored in `$GEMINI_WORK_PROJECT_NAME`, ID in `$GEMINI_WORK_PROJECT_ID`.
 - **Household Project:** ID `5`.
 - **Inbox (Default):** ID `1`.
+- **Trials Project:** ID `6`. Use this for any tasks related to trial and subscription cancellations.
 
 > **Note:** If environment variables are missing, ask the user to provide the Project ID for the specific context.
 
