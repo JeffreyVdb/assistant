@@ -31,6 +31,7 @@ This skill uses environment variables to protect sensitive project details. **Al
 
 ### 2. Task Creation & Enrichment
 - **Brussels Timezone:** All due dates must be calculated based on the Brussels timezone (CET/CEST).
+- **Mandatory Due Dates:** Always set a `due_date` whenever the user mentions time-related phrases such as "in x days," "by Friday," or specific dates. Use the current date and time context to calculate the correct timestamp.
 - **Task Breakdown (ADHD Support):** If a task seems large, break it down into smaller subtasks using the `relate` subcommand with `relationKind: "subtask"`.
 - **HTML Descriptions & Comments:** Use raw HTML in descriptions and comments. **CRITICAL:** Do NOT escape HTML characters (e.g., do not convert `<` to `&lt;`).
 - **Contextual Search:** Before providing advice, use `vikunja_tasks({ subcommand: "get", id: <id> })` to read existing context.
