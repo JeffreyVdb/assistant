@@ -1,6 +1,6 @@
 ---
 name: deploy-self-hosted
-description: Use this skill when the user asks to update or deploy self-hosted apps to a new version. The user self-hosts Actual Budget, Vaultwarden, and Vikunja.
+description: Use this skill when the user asks to update or deploy self-hosted apps to a new version. The user self-hosts Actual Budget, Vaultwarden, Vikunja and life tracker
 ---
 
 ## Deployment Repository
@@ -40,3 +40,8 @@ Versions and image definitions are stored in each role's defaults file:
 - **Container Image:** `docker.io/vikunja/vikunja`
 - **Playbook:** `playbooks/vikunja.yaml`
 - **Defaults File:** `roles/vikunja/defaults/main.yaml`
+
+### Life tracker
+- **Container Image:** `ghcr.io/jeffreyvdb/life-tracker`
+- **Playbook:** `playbooks/life_tracker.yaml`
+- **Defaults File:** `roles/life_tracker/defaults/main.yaml`
