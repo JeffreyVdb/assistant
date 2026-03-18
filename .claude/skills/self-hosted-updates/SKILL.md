@@ -1,6 +1,6 @@
 ---
 name: deploy-self-hosted
-description: Use this skill when the user asks to update or deploy self-hosted apps to a new version. The user self-hosts Actual Budget, Vaultwarden, Vikunja and life tracker
+description: Use this skill when the user asks to update or deploy self-hosted apps to a new version. The user self-hosts Actual Budget, Vaultwarden, Vikunja, life tracker and Pastiche
 ---
 
 ## Deployment Repository
@@ -45,3 +45,9 @@ Versions and image definitions are stored in each role's defaults file:
 - **Container Image:** `ghcr.io/jeffreyvdb/life-tracker`
 - **Playbook:** `playbooks/life_tracker.yaml`
 - **Defaults File:** `roles/life_tracker/defaults/main.yaml`
+
+### Pastiche
+- **Container Images:** `ghcr.io/jeffreyvdb/pastiche-backend` and `ghcr.io/jeffreyvdb/pastiche-frontend`
+- **Playbook:** `playbooks/pastiche.yaml`
+- **Defaults File:** `roles/pastiche/defaults/main.yaml`
+- **Note:** Has two separate version variables: `pastiche__backend_version` and `pastiche__frontend_version`

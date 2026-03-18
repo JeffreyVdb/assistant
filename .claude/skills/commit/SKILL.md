@@ -13,7 +13,7 @@ When asked to commit changes, follow this exact sequence:
 
 1. Sync the documentation to ensure the README.md is up to date:
    ```bash
-   node .agents/scripts/sync-docs.cjs
+   node .claude/scripts/sync-docs.cjs
    ```
 2. Create a clear and concise commit message using the Conventional Commits format.
 2. Ensure that lines in the description and message are no longer than 100 characters.
